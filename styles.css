@@ -32,16 +32,16 @@ p, .description {
 a {
   color: var(--primary-color);
   font-weight: bold;
+  outline: none;
 }
 
 .underline {
-  outline: none;
   text-decoration: underline 0.125rem rgba(255, 255, 255, 0);
   transition: text-decoration-color 0.2s;
 }
 
 .underline:hover {
-  text-decoration-color: var(--primary-color);
+  text-decoration-color: currentcolor;
 }
 
 #container {
@@ -290,4 +290,85 @@ form button {
 form button:hover {
   background-color: var(--secondary-color);
   color: white;
+}
+
+/* Ideia.html */
+#page-ideas #container {
+  display: block;
+}
+
+#page-ideas header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#page-ideas nav {
+  display: flex;
+  align-items: center;
+
+  gap: 1rem;
+}
+
+#page-ideas nav li {
+  list-style: none;
+}
+
+#page-ideas nav li a {
+  color: var(--text-primary-color);
+}
+
+#page-ideas nav li:last-child a {
+  width: 9.375rem;
+  height: 2.5rem;
+
+  border-radius: 0.5rem;
+
+  background-color: var(--primary-color);
+
+  color: white;
+
+  font-size: 0.875rem;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: background-color 0.2s;
+}
+
+#page-ideas nav li:last-child a:hover {
+  background-color: var(--secondary-color);
+}
+
+section#title {
+  text-align: center;
+}
+
+section#title p {
+  margin: 0;
+
+  opacity: 0.7;
+}
+
+section#title h1 {
+  margin: 0;
+
+  font-size: 1.75rem;
+}
+
+section#ideas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 1.25rem;
+}
+
+section#title,
+section#ideas,
+footer {
+  margin-top: 4rem;
 }
