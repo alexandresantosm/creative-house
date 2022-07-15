@@ -19,6 +19,10 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+body.hiddenScroll {
+  overflow: hidden;
+}
+
 p {
   margin-block: 0.5rem;
 }
@@ -168,10 +172,10 @@ footer a:hover {
 #modal {
   position: absolute;
   top: 0;
-
-  width: 100vw;
-  height: 100vh;
-
+  bottom: 0;
+  right: 0;
+  left: 0;
+  
   background-color: var(--primary-color);
 
   display: flex;
@@ -185,8 +189,12 @@ footer a:hover {
   visibility: hidden;
 }
 
+#modal.addScroll {
+  overflow: auto;
+}
+
 #modal .content {
-  margin-top: 8rem;
+  margin: auto;
 
   color: white;
 }
@@ -201,9 +209,9 @@ footer a:hover {
   max-width: 50rem;
 
   margin-inline: auto;
-
+  
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
 }
 
