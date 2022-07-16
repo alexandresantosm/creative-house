@@ -1,11 +1,21 @@
 import express from 'express';
+import path, { dirname } from 'path';
 
 const PORT_SERVER = 3000;
 
 const server = express();
 
+server.use(express.static("public"));
+
+const indexUrl = path.resolve(dirname('./'), 'views', 'index.html');
+const ideasUrl = path.resolve(dirname('./'), 'views', 'ideas.html');
+
 server.get("/", (req, res) => {
-  return res.send('<h1>Hello World!</h1>')
+  return res.sendFile(indexUrl);
+});
+
+server.get("/ideas", (req, res) => {
+  return res.sendFile(ideasUrl);
 });
 
 server.listen(PORT_SERVER, () => {
