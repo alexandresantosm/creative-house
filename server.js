@@ -1,5 +1,6 @@
 import express from 'express';
-import path, { dirname } from 'path';
+import nunjucks from 'nunjucks';
+import { ideas } from './mocks/ideas-mock.js';
 
 const PORT_SERVER = 3000;
 
@@ -7,15 +8,22 @@ const server = express();
 
 server.use(express.static("public"));
 
-const indexUrl = path.resolve(dirname('./'), 'views', 'index.html');
-const ideasUrl = path.resolve(dirname('./'), 'views', 'ideas.html');
+nunjucks.configure('views', {
+  express: server,
+  noCache: true,
+});
+
+const ideasOrderByLast = [...ideas]
+  .reverse();
 
 server.get("/", (req, res) => {
-  return res.sendFile(indexUrl);
+  const lastIdeas = ideasOrderByLast.slice(0, 3);
+
+  return res.render('index.html', { ideas: lastIdeas });
 });
 
 server.get("/ideas", (req, res) => {
-  return res.sendFile(ideasUrl);
+  return res.render('ideas.html', { ideas: ideasOrderByLast });
 });
 
 server.listen(PORT_SERVER, () => {

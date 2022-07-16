@@ -53,59 +53,27 @@
 
       <section id="last-ideas">
 
-        <div class="idea">
+        {% for idea in ideas %}
 
-          <img src="https://cdn-icons-png.flaticon.com/512/1688/1688400.png" alt="Web development">
+          <div class="idea">
 
-          <div class="content">
+            <img src="{{idea.imageUrl}}" alt="{{idea.imageDescription}}">
 
-            <h3>Cursos de Programação</h3>
+            <div class="content">
 
-            <p>Estudo</p>
+              <h3>{{idea.title}}</h3>
 
-            <div class="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis molestiae laudantium nesciunt eaque libero a illum beatae fuga hic quos quidem quisquam eius culpa nostrum, quis ducimus soluta. Consequuntur, odit.</div>
+              <p>{{idea.category}}</p>
 
-            <a class="underline" href="#">Ir para Ideia</a>
+              <div class="description">{{idea.description}}</div>
 
-          </div>
+              <a class="underline" href="{{idea.ideaUrl}}" target="_blank">Ir para Ideia</a>
 
-        </div>
-
-        <div class="idea">
-
-          <img src="https://cdn-icons-png.flaticon.com/512/7984/7984815.png" alt="Excersises">
-
-          <div class="content">
-
-            <h3>Exercícios</h3>
-
-            <p>Saúde</p>
-
-            <div class="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis molestiae laudantium nesciunt eaque libero a illum beatae fuga hic quos quidem quisquam eius culpa nostrum, quis ducimus soluta. Consequuntur, odit.</div>
-
-            <a class="underline" href="#">Ir para Ideia</a>
+            </div>
 
           </div>
-      
-        </div>
-
-        <div class="idea">
-
-          <img src="https://cdn-icons-png.flaticon.com/512/4072/4072275.png" alt="Meditação">
-
-          <div class="content">
-
-            <h3>Meditação</h3>
-
-            <p>Mentalidade</p>
-
-            <div class="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis molestiae laudantium nesciunt eaque libero a illum beatae fuga hic quos quidem quisquam eius culpa nostrum, quis ducimus soluta. Consequuntur, odit.</div>
-
-            <a class="underline" href="#">Ir para Ideia</a>
-
-          </div>
-
-        </div>
+          
+        {% endfor %}
 
       </section>
       
