@@ -1,127 +1,41 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "layout.html" %}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+{% block content %}
 
-    <link rel="stylesheet" href="./styles.css">
+<section id="intro">
 
-    <title>Casa Criativa</title>
-  </head>
-  <body>
+  <header>
+    
+    {% include "logo.html" %}
 
-    <div id="container">
+  </header>
 
-      <section id="intro">
+  <main>
 
-        <header>
-          
-          <a href="/">
-            <img src="./images/logo.png" alt="Casa Criativa Logo">
-          </a>
+    <p>Ficar em casa em períodos longos, não deve ser nada fácil.</p>
 
-        </header>
+    <p>Iremos catalogar <strong>ideias, brincadeiras, jogos, filmes, livros, cursos, dicas</strong> e tudo que for necessário para tornar esse momento mais interessante.</p>
 
-        <main>
+    <p>Comece clicando em <strong class="indicate">ver ideias</strong> para ver as ideias cadastradas e contribua <strong class="indicate">adicionando a sua ideia</strong>.</p>
 
-          <p>Ficar em casa em períodos longos, não deve ser nada fácil.</p>
+  </main>
+
+  <section id="buttons">
+
+    <button onclick="onOff()" class="underline">+ Adicionar Ideia</button>
+
+    <a href="/ideas" class="button">Ver Ideias</a href="">
+
+  </section>
   
-          <p>Iremos catalogar <strong>ideias, brincadeiras, jogos, filmes, livros, cursos, dicas</strong> e tudo que for necessário para tornar esse momento mais interessante.</p>
-  
-          <p>Comece clicando em <strong class="indicate">ver ideias</strong> para ver as ideias cadastradas e contribua <strong class="indicate">adicionando a sua ideia</strong>.</p>
+  {% include "footer.html" %}
 
-        </main>
+</section>
 
-        <section id="buttons">
+<section id="last-ideas">
 
-          <button onclick="onOff()" class="underline">+ Adicionar Ideia</button>
+  {% include "allIdeas.html" %}
 
-          <a href="/ideas" class="button">Ver Ideias</a href="">
+</section>
 
-        </section>
-        
-        <footer>
-          Feito com 💜 
-          <a class="underline" href="https://www.rocketseat.com.br/" target="_blank">Rocketseat</a>.
-        </footer>
-
-      </section>
-
-      <section id="last-ideas">
-
-        {% for idea in ideas %}
-
-          <div class="idea">
-
-            <img src="{{idea.imageUrl}}" alt="{{idea.imageDescription}}">
-
-            <div class="content">
-
-              <h3>{{idea.title}}</h3>
-
-              <p>{{idea.category}}</p>
-
-              <div class="description">{{idea.description}}</div>
-
-              <a class="underline" href="{{idea.ideaUrl}}" target="_blank">Ir para Ideia</a>
-
-            </div>
-
-          </div>
-          
-        {% endfor %}
-
-      </section>
-      
-    </div>
-
-    <!-- Modal -->
-    <div id="modal" class="hidden">
-      
-      <div class="content">
-        <h1>Nova Ideia</h1>
-
-        <form>
-
-          <div class="input-wrapper">
-            <label for="title">Título da ideia</label>
-            <input type="text" name="title">
-          </div>
-          
-          <div class="input-wrapper">
-            <label for="category">Categoria</label>
-            <input type="text" name="category">
-          </div>
-
-          <div class="input-wrapper">
-            <label for="image-url">Link da imagem</label>
-            <input type="url" name="image">
-          </div>
-
-          <div class="input-wrapper">
-            <label for="description">Digite uma descrição para essa ideia</label>
-            <textarea name="description" cols="30" rows="10"></textarea>
-          </div>
-
-          <div class="input-wrapper">
-            <label for="idea-url">Link da ideia</label>
-            <input type="url" name="idea-url">
-          </div> 
-
-          <a href="#" onclick="onOff()">Voltar</a>
-          
-          <button type="submit">Salvar</button>
-
-        </form>
-
-      </div>
-
-    </div>
-
-    <script src="./index.js"></script>
-  </body>
-</html>
+{% endblock content %}

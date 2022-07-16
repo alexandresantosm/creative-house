@@ -1,132 +1,55 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "layout.html" %}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+{% block pageTitle %}
 
-    <link rel="stylesheet" href="./styles.css">
     <title>Ideas - Casa Criativa</title>
-  </head>
-  <body id="page-ideas">
-    
-    <div id="container">
 
-      <header>
+{% endblock pageTitle %}
 
-        <a href="/">
-          <img src="/images/logo.png" alt="Casa Criativa Logo">
-        </a>
+{% set bodyId = "page-ideas" %}
 
-        <nav>
+{% block content %}
 
-          <li>
-          
-            <a class="underline" href="/">Início</a>
+  <header>
 
-          </li>
+    {% include "logo.html" %}
 
-          <li>
-          
-            <a href="#" class="button" onclick="onOff()">Nova Ideia</a>
+    <nav>
 
-          </li>
+      <li>
+      
+        <a class="underline" href="/">Início</a>
 
-        </nav>
+      </li>
 
-      </header>
+      <li>
+      
+        <a href="#" class="button" onclick="onOff()">Nova Ideia</a>
 
-      <section id="title">
+      </li>
 
-        <p>em exibição</p>
+    </nav>
 
-        <h1>Ideias</h1>
+  </header>
 
-      </section>
+  <section id="title">
 
-      <main>
+    <p>em exibição</p>
 
-        <section id="ideas">
+    <h1>Ideias</h1>
 
-          {% for idea in ideas %}
+  </section>
 
-            <div class="idea">
+  <main>
 
-              <img src="{{idea.imageUrl}}" alt="{{idea.imageDescription}}">
+    <section id="ideas">
 
-              <div class="content">
+      {% include "allIdeas.html" %}
 
-                <h3>{{idea.title}}</h3>
+    </section>
 
-                <p>{{idea.category}}</p>
+  </main>
 
-                <div class="description">{{idea.description}}</div>
+  {% include "footer.html" %}
 
-                <a class="underline" href="{{idea.ideaUrl}}" target="_blank">Ir para Ideia</a>
-
-              </div>
-
-            </div>
-
-          {% endfor %}
-
-        </section>
-
-      </main>
-
-      <footer>
-        Feito com 💜 
-        <a class="underline" href="https://www.rocketseat.com.br/" target="_blank">Rocketseat</a>.
-      </footer>
-
-    </div>
-
-    <!-- Modal -->
-    <div id="modal" class="hidden">
-  
-      <div class="content">
-        <h1>Nova Ideia</h1>
-
-        <form>
-
-          <div class="input-wrapper">
-            <label for="title">Título da ideia</label>
-            <input type="text" name="title">
-          </div>
-          
-          <div class="input-wrapper">
-            <label for="category">Categoria</label>
-            <input type="text" name="category">
-          </div>
-
-          <div class="input-wrapper">
-            <label for="image-url">Link da imagem</label>
-            <input type="url" name="image">
-          </div>
-
-          <div class="input-wrapper">
-            <label for="description">Digite uma descrição para essa ideia</label>
-            <textarea name="description" cols="30" rows="10"></textarea>
-          </div>
-
-          <div class="input-wrapper">
-            <label for="idea-url">Link da ideia</label>
-            <input type="url" name="idea-url">
-          </div> 
-
-          <a href="#" onclick="onOff()">Voltar</a>
-          
-          <button type="submit">Salvar</button>
-
-        </form>
-
-      </div>
-
-    </div>
-
-    <script src="./index.js"></script>
-  </body>
-</html>
+{% endblock content %}
