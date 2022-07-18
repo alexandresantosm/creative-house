@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<section id="error">
+
+  <header>
+    
+    {% include "logo.html" %}
+
+  </header>
+
+  <main>
+
+    <img src="https://cdn-icons-png.flaticon.com/512/5741/5741647.png" alt="Imagem de erro no servidor">
+
+    <h1>500</h1>
+
+    <p>Internal Server Error</p>
+
+    <a class="underline" href="/">Voltar para o início</a>
+    
+  </main>
+
+  {% include "footer.html" %}
+  
+</section>
+
+{% endblock content %}
