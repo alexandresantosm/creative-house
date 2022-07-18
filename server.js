@@ -8,6 +8,8 @@ const server = express();
 
 server.use(express.static("public"));
 
+server.use(express.urlencoded({ extended: true }));
+
 nunjucks.configure('views', {
   express: server,
   noCache: true,
@@ -78,6 +80,55 @@ server.get("/ideas", (req, res) => {
   
     return res.render('ideas.html', { ideas: allIdeas });
   });
+});
+
+server.post('/', (req, res) => {
+  const {
+    title,
+    category,
+    "image-url": imageUrl,
+    description,
+    "idea-url": ideaUrl,
+  } = req.body;
+
+  const imageDescription = `Imagem de ${title}`;
+
+  const queryCreateNewIdea = `
+    INSERT INTO ideas (
+      image_url,
+      image_description,
+      title,
+      category,
+      description,
+      idea_url
+    )
+    VALUES (
+      ?, ?, ?, ?, ?, ? 
+    );
+  `;
+
+  const newIdea = [
+    imageUrl,
+    imageDescription,
+    title,
+    category,
+    description,
+    ideaUrl
+  ];
+  
+  database.run(
+    queryCreateNewIdea,
+    newIdea,
+    (err) => {
+      if (err) {
+        console.log(err);
+  
+        return res.render('error.html');
+      }
+
+      return res.redirect('/ideas');
+    }
+  );
 });
 
 server.listen(PORT_SERVER, () => {
