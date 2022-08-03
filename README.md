@@ -1,6 +1,6 @@
 > # Project Casa Criativa
 
-![Screenshot AlgaShopping](/.github/screenshot-homepage.png)
+![Screenshot Casa Criativa](/.github/screenshot-homepage.png)
 
 The project stores a set of ideas to practice during the pandemic period.
 
